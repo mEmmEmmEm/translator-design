@@ -11,6 +11,7 @@
 - Числа с плавающей точкой и экспоненциальной записью (например, `1.5e2`)  
 
 ## Грамматика, используемая в программе
+```
 <Expr> ::= <LeadMinusOpt> <Sum>
 <LeadMinusOpt> ::= "-" | ε
 <Sum> ::= <Prod> <SumTail>
@@ -18,7 +19,7 @@
 <Prod> ::= <Primary> <ProdTail>
 <ProdTail> ::= "*" <Primary> <ProdTail> | "/" <Primary> <ProdTail> | ε
 <Primary> ::= "(" <Expr> ")" | NUMBER
-
+```
 ## Сборка
 
 Программа написана на C++17
