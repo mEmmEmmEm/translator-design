@@ -2,6 +2,8 @@
 #define AST_H
 
 #include <memory>
+#include <stdexcept>
+#include <cmath>
 
 struct Expr {
     virtual ~Expr() = default;
@@ -28,7 +30,11 @@ struct BinaryExpr : Expr {
             case OP_ADD: return left->eval() + right->eval();
             case OP_SUB: return left->eval() - right->eval();
             case OP_MUL: return left->eval() * right->eval();
-            case OP_DIV: return left->eval() / right->eval();
+                case OP_DIV: 
+                if (right->eval() == 0.0) {
+                    throw std::runtime_error("Semantic error: division by zero");
+                }
+                return left->eval() / right->eval();
         }
         return 0;
     }
